@@ -1,6 +1,6 @@
 package projectView;
 
-import projectController.controllerTelaLogin;
+import projectController.ControllerTelaLogin;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,7 @@ import java.awt.event.FocusEvent;
 
 public class TelaLogin {
     public JPanel painelTelaLogin;
-    private controllerTelaLogin controllerTelaLogin = new controllerTelaLogin();
+    private ControllerTelaLogin controllerTelaLogin = new ControllerTelaLogin();
     private boolean emailAceito, senhaAceita;
     private JTextField campoEmail;
     private JPasswordField campoSenha;

@@ -6,7 +6,7 @@ import projectObject.UsuarioObject;
 import javax.swing.*;
 import java.util.List;
 
-public class controllerTelaLogin {
+public class ControllerTelaLogin {
     private UsuarioObject usuarioAtual = new UsuarioObject();
     private final UsuarioDAO usuarioBanco = new UsuarioDAO();
     private final List<UsuarioObject> listaDeUsuarios = usuarioBanco.getUsuarios();
