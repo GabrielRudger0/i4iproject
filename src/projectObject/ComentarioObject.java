@@ -2,17 +2,17 @@ package projectObject;
 
 public class ComentarioObject {
 
-    private String comentarioId;
+    private int comentarioId;
     private String comentarioDescricao;
-    private int FKMaterialId;
-    private int FKUsuarioId;
+    private Integer FKMaterialId;
+    private Integer FKUsuarioId;
     private String comentarioData;
 
-    public String getComentarioId() {
+    public int getComentarioId() {
         return comentarioId;
     }
 
-    public void setComentarioId(String comentarioId) {
+    public void setComentarioId(Integer comentarioId) {
         this.comentarioId = comentarioId;
     }
 
@@ -28,7 +28,7 @@ public class ComentarioObject {
         return FKMaterialId;
     }
 
-    public void setFKMaterialId(int FKMaterialId) {
+    public void setFKMaterialId(Integer FKMaterialId) {
         this.FKMaterialId = FKMaterialId;
     }
 
@@ -36,7 +36,7 @@ public class ComentarioObject {
         return FKUsuarioId;
     }
 
-    public void setFKUsuarioId(int FKUsuarioId) {
+    public void setFKUsuarioId(Integer FKUsuarioId) {
         this.FKUsuarioId = FKUsuarioId;
     }
 

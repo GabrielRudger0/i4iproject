@@ -2,16 +2,16 @@ package projectObject;
 
 public class UsuarioObject {
 
-    private String usuarioId;
+    private int usuarioId;
     private String usuarioNome;
     private String usuarioEmail;
     private String usuarioSenha;
 
-    public String getUsuarioId() {
+    public int getUsuarioId() {
         return usuarioId;
     }
 
-    public void setUsuarioId(String usuarioId) {
+    public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
 

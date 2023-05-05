@@ -2,17 +2,17 @@ package projectObject;
 
 public class MaterialObject {
 
-    private String materialId;
+    private Integer materialId;
     private String materialNome;
     private String materialDescricao;
-    private int materialAtivo;
+    private Integer materialAtivo;
     private String materialData;
 
-    public String getMaterialId() {
+    public Integer getMaterialId() {
         return materialId;
     }
 
-    public void setMaterialId(String materialId) {
+    public void setMaterialId(Integer materialId) {
         this.materialId = materialId;
     }
 
@@ -36,7 +36,7 @@ public class MaterialObject {
         return materialAtivo;
     }
 
-    public void setMaterialAtivo(int materialAtivo) {
+    public void setMaterialAtivo(Integer materialAtivo) {
         this.materialAtivo = materialAtivo;
     }
 

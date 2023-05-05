@@ -73,7 +73,7 @@ public class MaterialDAO {
                 projectObject.MaterialObject pegaMateriais = new projectObject.MaterialObject();
 
                 //pegar dados
-                pegaMateriais.setMaterialId(rset.getString("MaterialId"));
+                pegaMateriais.setMaterialId(rset.getInt("MaterialId"));
                 pegaMateriais.setMaterialNome(rset.getString("MaterialNome"));
                 pegaMateriais.setMaterialDescricao(rset.getString("MaterialDescricao"));
                 pegaMateriais.setMaterialAtivo(rset.getInt("MaterialAtivo"));

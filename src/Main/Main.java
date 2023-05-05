@@ -13,7 +13,7 @@ public class Main {
         ComentarioDAO comentariosBanco = new ComentarioDAO();
 
         //Teste de conexão com o banco
-        String id = usuariosBanco.getUsuarios().get(0).getUsuarioId();
+        Integer id = usuariosBanco.getUsuarios().get(0).getUsuarioId();
         String nome = usuariosBanco.getUsuarios().get(0).getUsuarioNome();
         String email = usuariosBanco.getUsuarios().get(0).getUsuarioEmail();
         String senha = usuariosBanco.getUsuarios().get(0).getUsuarioSenha();

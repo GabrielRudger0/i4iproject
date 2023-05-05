@@ -72,7 +72,7 @@ public class UsuarioDAO {
                 projectObject.UsuarioObject pegaUsuarios = new projectObject.UsuarioObject();
 
                 //pegar dados
-                pegaUsuarios.setUsuarioId(rset.getString("UsuarioId"));
+                pegaUsuarios.setUsuarioId(rset.getInt("UsuarioId"));
                 pegaUsuarios.setUsuarioNome(rset.getString("UsuarioNome"));
                 pegaUsuarios.setUsuarioEmail(rset.getString("UsuarioEmail"));
                 pegaUsuarios.setUsuarioSenha(rset.getString("UsuarioSenha"));

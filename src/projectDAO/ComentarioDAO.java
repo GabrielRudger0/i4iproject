@@ -74,7 +74,7 @@ public class ComentarioDAO {
                 projectObject.ComentarioObject pegaComentarios = new projectObject.ComentarioObject();
 
                 //pegar dados
-                pegaComentarios.setComentarioId(rset.getString("ComentarioId"));
+                pegaComentarios.setComentarioId(rset.getInt("ComentarioId"));
                 pegaComentarios.setComentarioDescricao(rset.getString("ComentarioDescricao"));
                 pegaComentarios.setFKMaterialId(rset.getInt("FKMaterialId"));
                 pegaComentarios.setFKUsuarioId(rset.getInt("FKUsuarioId"));
