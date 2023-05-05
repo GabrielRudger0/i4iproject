@@ -1,5 +1,6 @@
 package Main;
 
+import projectDAO.ComentarioDAO;
 import projectDAO.MaterialDAO;
 import projectDAO.UsuarioDAO;
 
@@ -9,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         UsuarioDAO usuariosBanco = new UsuarioDAO();
         MaterialDAO materiaisBanco = new MaterialDAO();
+        ComentarioDAO comentariosBanco = new ComentarioDAO();
 
         //Teste de conexão com o banco
         String id = usuariosBanco.getUsuarios().get(0).getUsuarioId();
@@ -27,6 +29,17 @@ public class Main {
         String data = materiaisBanco.getMateriais().get(0).getMaterialData();
 
         JOptionPane.showMessageDialog(null, id + "\n" + nome + "\n" + descricao + "\n" + ativo + "\n"+
+                data);
+        //
+
+        //Teste de conexão com o banco
+        id = comentariosBanco.getComentarios().get(0).getComentarioId();
+        descricao = comentariosBanco.getComentarios().get(0).getComentarioDescricao();
+        Integer materialId = comentariosBanco.getComentarios().get(0).getFKMaterialId();
+        Integer usuarioId = comentariosBanco.getComentarios().get(0).getFKUsuarioId();
+        data = comentariosBanco.getComentarios().get(0).getComentarioData();
+
+        JOptionPane.showMessageDialog(null, id + "\n" + descricao + "\n" + materialId + "\n" + usuarioId + "\n"+
                 data);
         //
     }
