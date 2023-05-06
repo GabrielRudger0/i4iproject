@@ -2,11 +2,11 @@ package projectDAO;
 
 import com.mysql.jdbc.PreparedStatement;
 import i4iproject.factory.ConnectionFactory;
+import projectObject.UsuarioObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class UsuarioDAO {
 
@@ -48,11 +48,10 @@ public class UsuarioDAO {
 
     }
 
-    public List<projectObject.UsuarioObject> getUsuarios() {
-
+    public HashMap<Integer, UsuarioObject> getUsuarios() {
         String sql = "SELECT * FROM usuarios";
 
-        List<projectObject.UsuarioObject> usuarios = new ArrayList<>();
+        HashMap<Integer, UsuarioObject> usuarios = new HashMap<>();
 
         Connection conn = null;
         PreparedStatement pstn = null;
@@ -77,7 +76,7 @@ public class UsuarioDAO {
                 pegaUsuarios.setUsuarioEmail(rset.getString("UsuarioEmail"));
                 pegaUsuarios.setUsuarioSenha(rset.getString("UsuarioSenha"));
 
-                usuarios.add(pegaUsuarios);
+                usuarios.put(pegaUsuarios.getUsuarioId(), pegaUsuarios);
             }
 
         }catch(Exception e){

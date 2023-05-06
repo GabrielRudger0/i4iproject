@@ -4,22 +4,22 @@ import projectDAO.UsuarioDAO;
 import projectObject.UsuarioObject;
 
 import javax.swing.*;
-import java.util.List;
+import java.util.HashMap;
 
 public class ControllerTelaLogin {
-    private UsuarioObject usuarioAtual = new UsuarioObject();
+    private Integer usuarioAtual;
     private final UsuarioDAO usuarioBanco = new UsuarioDAO();
-    private final List<UsuarioObject> listaDeUsuarios = usuarioBanco.getUsuarios();
+    private final HashMap<Integer, UsuarioObject> listaDeUsuarios = usuarioBanco.getUsuarios();
 
     public boolean validarAcessoPorEmail(String emailDigitado) {
         boolean acessoPermitido = false;
 
-        for (UsuarioObject usuario : listaDeUsuarios) {
-            String emailNoBanco = usuario.getUsuarioEmail();
+        for (Integer usuarioIdNoBanco : listaDeUsuarios.keySet()) {
+            String emailNoBanco = listaDeUsuarios.get(usuarioIdNoBanco).getUsuarioEmail();
 
             if (emailDigitado.equals(emailNoBanco)) {
                 acessoPermitido = true;
-                usuarioAtual = usuario;
+                usuarioAtual = usuarioIdNoBanco;
                 break;
             }
         }
@@ -28,7 +28,7 @@ public class ControllerTelaLogin {
     }
     public boolean validarAcessoPorSenha(char[] senhaProtegida) {
         boolean acessoPermitido = false;
-        String senhaNoBanco = usuarioAtual.getUsuarioSenha();
+        String senhaNoBanco = listaDeUsuarios.get(usuarioAtual).getUsuarioSenha();
         String senhaDigitada = new String(senhaProtegida);
 
         if (senhaDigitada.equals(senhaNoBanco)) {
@@ -39,7 +39,6 @@ public class ControllerTelaLogin {
     }
 
     public void permiteAcesso(boolean emailAceito, boolean senhaAceita) {
-
         if (emailAceito && senhaAceita) {
             JOptionPane.showMessageDialog(null, "Deu bom");
         } else {

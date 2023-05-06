@@ -5,18 +5,19 @@ import projectDAO.UsuarioDAO;
 import projectObject.MaterialObject;
 import projectObject.UsuarioObject;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ControllerTelaComentario {
 
     public String retornaNomeDoUsuario(Integer usuarioId) {
         UsuarioDAO usuariosNoBanco = new UsuarioDAO();
-        List<UsuarioObject> listaDeUsuarios = usuariosNoBanco.getUsuarios();
+        HashMap<Integer, UsuarioObject> listaDeUsuarios = usuariosNoBanco.getUsuarios();
         String nome = null;
 
-        for (UsuarioObject usuario: listaDeUsuarios) {
-            if (usuario.getUsuarioId() == usuarioId) {
-                nome = usuario.getUsuarioNome();
+        for (Integer usuarioIdNoBanco : listaDeUsuarios.keySet()) {
+            if (usuarioIdNoBanco == usuarioId) {
+                nome = listaDeUsuarios.get(usuarioIdNoBanco).getUsuarioNome();
                 break;
             }
         }
