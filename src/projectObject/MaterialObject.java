@@ -7,6 +7,7 @@ public class MaterialObject {
     private String materialDescricao;
     private Integer materialAtivo;
     private String materialData;
+    private String materialImagem;
 
     public Integer getMaterialId() {
         return materialId;
@@ -43,8 +44,15 @@ public class MaterialObject {
     public String getMaterialData() {
         return materialData;
     }
-
     public void setMaterialData(String materialData) {
         this.materialData = materialData;
+    }
+
+    public String getMaterialImagem() {
+        return materialImagem;
+    }
+
+    public void setMaterialImagem(String materialImagem) {
+        this.materialImagem = materialImagem;
     }
 }

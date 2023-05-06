@@ -1,5 +1,6 @@
 package Main;
 
+import projectView.TelaCadastroMateriais;
 import projectView.TelaLogin;
 import projectView.TelaMateriais;
 
@@ -10,6 +11,7 @@ public class ExecutaTelas {
 
     public static JFrame frameTelaLogin = new JFrame("Login");
     public static JFrame frameTelaMateriais = new JFrame("Materiais");
+    public static JFrame frameTelaCadastroMateriais = new JFrame("Cadastro");
     private static Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
     public void iniciarTelaLogin() {
@@ -28,6 +30,14 @@ public class ExecutaTelas {
         frameTelaMateriais.pack();
         frameTelaMateriais.setVisible(true);
         frameTelaMateriais.setLocation(dim.width/2-frameTelaMateriais.getSize().width/2, dim.height/2-frameTelaMateriais.getSize().height/2);
+    }
+    public void iniciarTelaCadastroMaterial() {
+
+        frameTelaCadastroMateriais.setContentPane(new TelaCadastroMateriais().panelCadastroMateriais);
+        frameTelaCadastroMateriais.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameTelaCadastroMateriais.pack();
+        frameTelaCadastroMateriais.setVisible(true);
+        frameTelaCadastroMateriais.setLocation(dim.width/2-frameTelaCadastroMateriais.getSize().width/2, dim.height/2-frameTelaCadastroMateriais.getSize().height/2);
     }
 
 }

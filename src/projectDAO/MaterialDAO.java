@@ -13,7 +13,7 @@ public class MaterialDAO {
 
     public void save(projectObject.MaterialObject materiais){
 
-        String sql = "INSERT INTO material(MaterialNome,MaterialDescricao,MaterialAtivo, MaterialData) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO materiais(MaterialNome,MaterialDescricao,MaterialAtivo, MaterialData, MaterialImagem) VALUES(?,?,?,?,?)";
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -26,6 +26,7 @@ public class MaterialDAO {
             pstm.setString(2, materiais.getMaterialDescricao());
             pstm.setInt(3, materiais.getMaterialAtivo());
             pstm.setString (4, materiais.getMaterialData());
+            pstm.setString (5, materiais.getMaterialImagem());
 
             //executa a query
 
@@ -78,6 +79,7 @@ public class MaterialDAO {
                 pegaMateriais.setMaterialDescricao(rset.getString("MaterialDescricao"));
                 pegaMateriais.setMaterialAtivo(rset.getInt("MaterialAtivo"));
                 pegaMateriais.setMaterialData(rset.getString("MaterialData"));
+                pegaMateriais.setMaterialImagem(rset.getString("MaterialImagem"));
 
                 materiais.add(pegaMateriais);
             }

@@ -19,4 +19,7 @@ public class ControllerTelaMateriais {
         ExecutaTelas.frameTelaMateriais.dispose();
         executaTelas.iniciarTelaMateriais();
     }
+    public void cadastrarMaterial() {
+
+    }
 }
