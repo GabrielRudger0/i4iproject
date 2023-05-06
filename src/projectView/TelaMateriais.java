@@ -1,5 +1,6 @@
 package projectView;
 
+import Main.ExecutaTelas;
 import projectController.ControllerTelaMateriais;
 import projectDAO.MaterialDAO;
 import projectObject.MaterialObject;
@@ -45,25 +46,25 @@ public class TelaMateriais {
         botaoComentarios1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                executaTelaComentario();
             }
         });
         botaoComentarios2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                executaTelaComentario();
             }
         });
         botaoComentarios3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                executaTelaComentario();
             }
         });
         botaoComentarios4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                executaTelaComentario();
             }
         });
         botaoExcluirMaterial1.addActionListener(new ActionListener() {
@@ -108,10 +109,10 @@ public class TelaMateriais {
             label[1].setText("<html><p style=\"width:900px\">"+material.getMaterialDescricao()+"</html>");
             label[2].setText(material.getMaterialData());
         } else {
-            desabilitaVisibilidadeMaterial(label, imagem, botoes, indexNaListaDeMateriais);
+            desabilitaVisibilidadeMaterial(label, imagem, botoes);
             }
         } else {
-            desabilitaVisibilidadeMaterial(label, imagem, botoes, indexNaListaDeMateriais);
+            desabilitaVisibilidadeMaterial(label, imagem, botoes);
         }
     }
 
@@ -133,13 +134,17 @@ public class TelaMateriais {
         imagemDoMaterial = new ImageIcon(tamanhoPadraoImagem);
         return imagemDoMaterial;
     }
-    private void desabilitaVisibilidadeMaterial(JLabel[] label, JLabel imagem,
-                                                JButton[] botoes, Integer indexNaListaDeMateriais) {
+    private void desabilitaVisibilidadeMaterial(JLabel[] label, JLabel imagem, JButton[] botoes) {
         botoes[0].setVisible(false);
         botoes[1].setVisible(false);
         imagem.setVisible(false);
         label[0].setVisible(false);
         label[1].setVisible(false);
         label[2].setVisible(false);
+    }
+    private void executaTelaComentario() {
+        ExecutaTelas executaTelas = new ExecutaTelas();
+        executaTelas.iniciarTelaComentarios();
+        ExecutaTelas.frameTelaMateriais.dispose();
     }
 }
