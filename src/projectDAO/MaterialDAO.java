@@ -105,4 +105,34 @@ public class MaterialDAO {
         return materiais;
 
     }
+    public void delete(int id) {
+        String sql = "DELETE FROM materiais WHERE MaterialId = ?";
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try {
+            // cria conexao com banco de dados
+            conn = ConnectionFactory.createConnectionToMySQL();
+            pstm = (PreparedStatement) conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+
+            // executa a query
+            pstm.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // fechar a conexao
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package projectView;
 
+import projectController.ControllerTelaMateriais;
 import projectDAO.MaterialDAO;
 import projectObject.MaterialObject;
 
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 
 public class TelaMateriais {
     public JPanel panelTelaMateriais;
+    private ControllerTelaMateriais controller = new ControllerTelaMateriais();
     private JLabel processadorImagem, monitorImagem, mouseImagem, tecladoImagem;
     private JLabel materialNome1, materialDescricao1, materialData1, materialNome2, materialDescricao2, materialData2,
             materialNome3, materialDescricao3, materialData3, materialNome4, materialDescricao4, materialData4;
@@ -59,46 +61,44 @@ public class TelaMateriais {
         botaoExcluirMaterial1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                controller.excluirMaterial(0);
             }
         });
         botaoExcluirMaterial2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                controller.excluirMaterial(1);
             }
         });
         botaoExcluirMaterial3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                controller.excluirMaterial(2);
             }
         });
         botaoExcluirMaterial4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                controller.excluirMaterial(3);
             }
         });
     }
 
     private void setarInformacoesDosMateriais(JLabel[] label, JLabel imagem, JButton[] botoes, Integer indexNaListaDeMateriais) {
         MaterialDAO materiaisNoBanco = new MaterialDAO();
-        MaterialObject material = materiaisNoBanco.getMateriais().get(indexNaListaDeMateriais);
+        if (indexNaListaDeMateriais < materiaisNoBanco.getMateriais().size() - 1) {
+            MaterialObject material = materiaisNoBanco.getMateriais().get(indexNaListaDeMateriais);
 
         if (material.getMaterialAtivo() != 0) {
             label[0].setText(material.getMaterialNome());
             label[1].setText("<html><p style=\"width:900px\">"+material.getMaterialDescricao()+"</html>");
             label[2].setText(material.getMaterialData());
         } else {
-            botoes[0].setVisible(false);
-            botoes[1].setVisible(false);
-            imagem.setVisible(false);
-            label[0].setVisible(false);
-            label[1].setVisible(false);
-            label[2].setVisible(false);
+            desabilitaVisibilidadeMaterial(label, imagem, botoes, indexNaListaDeMateriais);
+            }
+        } else {
+            desabilitaVisibilidadeMaterial(label, imagem, botoes, indexNaListaDeMateriais);
         }
-
     }
 
     private void createUIComponents() {
@@ -115,5 +115,14 @@ public class TelaMateriais {
         Image tamanhoPadraoImagem = img.getScaledInstance(125,125,Image.SCALE_SMOOTH);
         imagemDoMaterial = new ImageIcon(tamanhoPadraoImagem);
         return imagemDoMaterial;
+    }
+    private void desabilitaVisibilidadeMaterial(JLabel[] label, JLabel imagem,
+                                                JButton[] botoes, Integer indexNaListaDeMateriais) {
+        botoes[0].setVisible(false);
+        botoes[1].setVisible(false);
+        imagem.setVisible(false);
+        label[0].setVisible(false);
+        label[1].setVisible(false);
+        label[2].setVisible(false);
     }
 }
