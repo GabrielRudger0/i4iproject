@@ -42,6 +42,8 @@ public class ControllerTelaComentario {
 
     }
 
+    //public static void
+
     public static List<Integer> listaIdsComentarioDoBanco() {
         ComentarioDAO comentariosNoBanco = new ComentarioDAO();
         HashMap<Integer, ComentarioObject> comentarios = comentariosNoBanco.getComentarios();

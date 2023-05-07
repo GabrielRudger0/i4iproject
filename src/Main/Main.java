@@ -5,8 +5,9 @@ public class Main {
 
         ExecutaTelas executaTelas = new ExecutaTelas();
 
+        executaTelas.iniciarTelaCadastroComentarios();
         //executaTelas.iniciarTelaLogin();
-        executaTelas.iniciarTelaMateriais();
+        //executaTelas.iniciarTelaMateriais();
         //executaTelas.iniciarTelaCadastroMaterial();
         //executaTelas.iniciarTelaComentarios();
     }

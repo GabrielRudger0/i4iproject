@@ -1,9 +1,6 @@
 package Main;
 
-import projectView.TelaCadastroMateriais;
-import projectView.TelaComentarios;
-import projectView.TelaLogin;
-import projectView.TelaMateriais;
+import projectView.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +11,7 @@ public class ExecutaTelas {
     public static JFrame frameTelaMateriais = new JFrame("Materiais");
     public static JFrame frameTelaCadastroMateriais = new JFrame("Cadastro");
     public static JFrame frameTelaComentarios = new JFrame("Comentários");
+    public static JFrame frameTelaCadastroComentarios = new JFrame("Cadastro de Comentários");
     private static Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
     public void iniciarTelaLogin() {
@@ -48,6 +46,14 @@ public class ExecutaTelas {
         frameTelaComentarios.pack();
         frameTelaComentarios.setVisible(true);
         frameTelaComentarios.setLocation(dim.width/2-frameTelaComentarios.getSize().width/2, dim.height/2-frameTelaComentarios.getSize().height/2);
+    }
+    public void iniciarTelaCadastroComentarios() {
+
+        frameTelaCadastroComentarios.setContentPane(new TelaCadastroComentario().panelCadastroComentario);
+        frameTelaCadastroComentarios.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameTelaCadastroComentarios.pack();
+        frameTelaCadastroComentarios.setVisible(true);
+        frameTelaCadastroComentarios.setLocation(dim.width/2-frameTelaCadastroComentarios.getSize().width/2, dim.height/2-frameTelaCadastroComentarios.getSize().height/2);
     }
 
 }
