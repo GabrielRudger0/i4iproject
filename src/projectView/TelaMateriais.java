@@ -1,6 +1,7 @@
 package projectView;
 
 import Main.ExecutaTelas;
+import projectController.ControllerTelaComentario;
 import projectController.ControllerTelaMateriais;
 
 import javax.swing.*;
@@ -40,24 +41,28 @@ public class TelaMateriais {
         botaoComentarios1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaComentario.materialIdParaTelaComentario = listaIdsMaterial.get(0);
                 executaTelaComentario();
             }
         });
         botaoComentarios2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaComentario.materialIdParaTelaComentario = listaIdsMaterial.get(1);
                 executaTelaComentario();
             }
         });
         botaoComentarios3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaComentario.materialIdParaTelaComentario = listaIdsMaterial.get(2);
                 executaTelaComentario();
             }
         });
         botaoComentarios4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaComentario.materialIdParaTelaComentario = listaIdsMaterial.get(3);
                 executaTelaComentario();
             }
         });

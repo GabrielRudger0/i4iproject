@@ -6,8 +6,7 @@ import projectObject.ComentarioObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class ComentarioDAO {
 
@@ -50,11 +49,11 @@ public class ComentarioDAO {
 
     }
 
-    public List<ComentarioObject> getComentarios() {
+    public HashMap<Integer, ComentarioObject> getComentarios() {
 
         String sql = "SELECT * FROM comentarios";
 
-        List<projectObject.ComentarioObject> comentarios = new ArrayList<>();
+        HashMap<Integer, ComentarioObject> comentarios = new HashMap<>();
 
         Connection conn = null;
         PreparedStatement pstn = null;
@@ -80,7 +79,7 @@ public class ComentarioDAO {
                 pegaComentarios.setFKUsuarioId(rset.getInt("FKUsuarioId"));
                 pegaComentarios.setComentarioData(rset.getString("ComentarioData"));
 
-                comentarios.add(pegaComentarios);
+                comentarios.put(pegaComentarios.getComentarioId(), pegaComentarios);
             }
 
         }catch(Exception e){
