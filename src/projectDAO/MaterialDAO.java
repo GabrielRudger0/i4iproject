@@ -6,8 +6,7 @@ import projectObject.MaterialObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class MaterialDAO {
 
@@ -50,11 +49,11 @@ public class MaterialDAO {
         }
 
     }
-    public List<MaterialObject> getMateriais() {
+    public HashMap<Integer, MaterialObject> getMateriais() {
 
         String sql = "SELECT * FROM materiais";
 
-        List<projectObject.MaterialObject> materiais = new ArrayList<>();
+        HashMap<Integer, MaterialObject> materiais = new HashMap<>();
 
         Connection conn = null;
         PreparedStatement pstn = null;
@@ -81,7 +80,7 @@ public class MaterialDAO {
                 pegaMateriais.setMaterialData(rset.getString("MaterialData"));
                 pegaMateriais.setMaterialImagem(rset.getString("MaterialImagem"));
 
-                materiais.add(pegaMateriais);
+                materiais.put(pegaMateriais.getMaterialId(), pegaMateriais);
             }
 
         }catch(Exception e){

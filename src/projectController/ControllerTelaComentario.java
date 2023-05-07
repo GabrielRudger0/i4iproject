@@ -6,7 +6,6 @@ import projectObject.MaterialObject;
 import projectObject.UsuarioObject;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class ControllerTelaComentario {
 
@@ -24,14 +23,14 @@ public class ControllerTelaComentario {
 
         return nome;
     }
-    public String retornaNomeMaterial(Integer materialId) {
+    public static String retornaNomeMaterial(Integer materialId) {
         MaterialDAO materiaisNoBanco = new MaterialDAO();
-        List<MaterialObject> listaDeMateriais = materiaisNoBanco.getMateriais();
+        HashMap<Integer, MaterialObject> listaDeMateriais = materiaisNoBanco.getMateriais();
         String nome = null;
 
-        for (MaterialObject materiais : listaDeMateriais) {
-            if (materiais.getMaterialId() == materialId) {
-                nome = materiais.getMaterialNome();
+        for (Integer materiaisId : listaDeMateriais.keySet()) {
+            if (materiaisId == materialId) {
+                nome = listaDeMateriais.get(materiaisId).getMaterialNome();
                 break;
             }
         }
