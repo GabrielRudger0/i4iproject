@@ -67,6 +67,13 @@ public class TelaMateriais {
                 executaTelaComentario();
             }
         });
+        botaoComentarios5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControllerTelaComentario.materialIdParaTelaComentario = listaIdsMaterial.get(4);
+                executaTelaComentario();
+            }
+        });
         botaoExcluirMaterial1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,6 +117,7 @@ public class TelaMateriais {
                 executaTelas.iniciarTelaCadastroMaterial();
             }
         });
+
     }
 
     private void createUIComponents() {
