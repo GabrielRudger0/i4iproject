@@ -16,26 +16,24 @@ public class TelaComentarios {
     private JLabel data1, data2, data3, data4;
     private JLabel nomeMaterialNoComentario;
     private JButton botaoCadastrarComentario, botaoVoltar;
+    private JSeparator separador1, separador2, separador3, separador4;
     private JLabel[] labels1 = {usuario1, comentario1, data1};
     private JLabel[] labels2 = {usuario2, comentario2, data2};
     private JLabel[] labels3 = {usuario3, comentario3, data3};
     private JLabel[] labels4 = {usuario4, comentario4, data4};
+    public TelaComentarios() {
 
-public TelaComentarios() {
+        List<ComentarioObject> listaComentarios = ControllerTelaComentario.retornaListaComentariosDoMaterial();
 
-    List<ComentarioObject> listaComentarios = ControllerTelaComentario.retornaListaComentariosDoMaterial();
-
-    ControllerTelaComentario.setarInformacoesDosComentarios(labels1, listaComentarios.get(0), nomeMaterialNoComentario);
-    ControllerTelaComentario.setarInformacoesDosComentarios(labels2, listaComentarios.get(1), nomeMaterialNoComentario);
-    ControllerTelaComentario.setarInformacoesDosComentarios(labels3, listaComentarios.get(2), nomeMaterialNoComentario);
-    ControllerTelaComentario.setarInformacoesDosComentarios(labels4, listaComentarios.get(3), nomeMaterialNoComentario);
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels1, separador1, listaComentarios.get(0), nomeMaterialNoComentario);
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels2, separador2, listaComentarios.get(1), nomeMaterialNoComentario);
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels3, separador3, listaComentarios.get(2), nomeMaterialNoComentario);
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels4, separador4, listaComentarios.get(3), nomeMaterialNoComentario);
 
     botaoCadastrarComentario.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            ExecutaTelas executaTelas = new ExecutaTelas();
-            ExecutaTelas.frameTelaComentarios.dispose();
-            executaTelas.iniciarTelaCadastroComentarios();
+            ControllerTelaComentario.iniciaCadastroDeComentario();
         }
     });
     botaoVoltar.addActionListener(new ActionListener() {

@@ -1,5 +1,6 @@
 package ProjectController;
 
+import Main.ExecutaTelas;
 import ProjectDAO.ComentarioDAO;
 import ProjectDAO.MaterialDAO;
 import ProjectDAO.UsuarioDAO;
@@ -12,11 +13,11 @@ import java.util.*;
 
 public class ControllerTelaComentario {
     public static Integer materialIdParaTelaComentario;
-    public static void setarInformacoesDosComentarios(JLabel[] labels, ComentarioObject comentario, JLabel nomeMaterialNoTitulo) {
-
+    public static void setarInformacoesDosComentarios(JLabel[] labels, JSeparator separador,
+                                                      ComentarioObject comentario, JLabel nomeMaterialNoTitulo) {
 
         if (comentario == null) {
-            desabilitaVisibilidade(labels);
+            desabilitaVisibilidade(labels, separador);
 
         } else {
             String nomeUsuario = retornaNomeDoUsuario(comentario.getFKUsuarioId());
@@ -85,12 +86,40 @@ public class ControllerTelaComentario {
         }
         return listaComentariosDeMaterial;
     }
-    private static void desabilitaVisibilidade(JLabel[] labels) {
+    public static void iniciaCadastroDeComentario() {
+        ComentarioDAO comentarios = new ComentarioDAO();
+        HashMap<Integer, ComentarioObject> listaComentariosNoBanco = comentarios.getComentarios();
+        Integer materialId = materialIdParaTelaComentario;
+        Integer numeroComentarios = 0;
+
+        /*
+            For verifica quantos comentários no material existem;
+            Logo após isso é verificado se o número de comentários está no limite (MAX: 4);
+            Se não, inicia a tela de cadastro de comentário normalmente;
+         */
+        for (Integer keyComentarioId: listaComentariosNoBanco.keySet()) {
+            Integer materialIdNoComentario = listaComentariosNoBanco.get(keyComentarioId).getFKMaterialId();
+
+            if (materialIdNoComentario == materialId) {
+                ++numeroComentarios;
+            }
+        }
+        if (numeroComentarios == 4) {
+            JOptionPane.showMessageDialog(null, "Lista de comentários cheia!",
+                    "Cadastro de Comentário",JOptionPane.ERROR_MESSAGE);
+        } else {
+            ExecutaTelas executaTelas = new ExecutaTelas();
+            ExecutaTelas.frameTelaComentarios.dispose();
+            executaTelas.iniciarTelaCadastroComentarios();
+        }
+    }
+    private static void desabilitaVisibilidade(JLabel[] labels, JSeparator separador) {
 
         //Desabilita a visibilidade dos campos na tela
         labels[0].setVisible(false);
         labels[1].setVisible(false);
         labels[2].setVisible(false);
+        separador.setVisible(false);
     }
 
 }
