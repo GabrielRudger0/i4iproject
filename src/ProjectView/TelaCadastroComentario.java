@@ -59,19 +59,33 @@ public class TelaCadastroComentario {
         textoComentario = campoTexto;
     }
     private void cadastrarComentario() {
-        ComentarioObject comentario = new ComentarioObject();
-        ComentarioDAO comentariosNoBanco = new ComentarioDAO();
-
         String comentarioDigitado = textoComentario.getText();
-        comentario.setComentarioDescricao(comentarioDigitado);
 
-        LocalDateTime now = LocalDateTime.now();
-        Timestamp timestamp = Timestamp.valueOf(now);
-        comentario.setComentarioData(String.valueOf(timestamp));
+        if (comentarioDigitado.length() < 1) {
+            JOptionPane.showMessageDialog(null, "Campo de comentário vazio!",
+                    "Cadastro de Comentário",JOptionPane.ERROR_MESSAGE);
 
-        comentario.setFKUsuarioId(ControllerTelaLogin.usuarioAtual);
-        comentario.setFKMaterialId(ControllerTelaComentario.materialIdParaTelaComentario);
+        } else {
+            ComentarioObject comentario = new ComentarioObject();
+            ComentarioDAO comentariosNoBanco = new ComentarioDAO();
 
-        comentariosNoBanco.save(comentario);
+            comentario.setComentarioDescricao(comentarioDigitado);
+
+            LocalDateTime now = LocalDateTime.now();
+            Timestamp timestamp = Timestamp.valueOf(now);
+            comentario.setComentarioData(String.valueOf(timestamp));
+
+            comentario.setFKUsuarioId(ControllerTelaLogin.usuarioAtual);
+            comentario.setFKMaterialId(ControllerTelaComentario.materialIdParaTelaComentario);
+
+            comentariosNoBanco.save(comentario);
+            JOptionPane.showMessageDialog(null, "Comentário salvo com sucesso!",
+                    "Cadastro de Comentário",JOptionPane.INFORMATION_MESSAGE);
+
+            ExecutaTelas executaTelas = new ExecutaTelas();
+            ExecutaTelas.frameTelaCadastroComentarios.dispose();
+            executaTelas.iniciarTelaMateriais();
+
+        }
     }
 }
