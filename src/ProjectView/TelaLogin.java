@@ -1,6 +1,6 @@
-package projectView;
+package ProjectView;
 
-import projectController.ControllerTelaLogin;
+import ProjectController.ControllerTelaLogin;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

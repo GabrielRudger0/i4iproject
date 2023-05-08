@@ -1,11 +1,11 @@
-package projectController;
+package ProjectController;
 
-import projectDAO.ComentarioDAO;
-import projectDAO.MaterialDAO;
-import projectDAO.UsuarioDAO;
-import projectObject.ComentarioObject;
-import projectObject.MaterialObject;
-import projectObject.UsuarioObject;
+import ProjectDAO.ComentarioDAO;
+import ProjectDAO.MaterialDAO;
+import ProjectDAO.UsuarioDAO;
+import ProjectObject.ComentarioObject;
+import ProjectObject.MaterialObject;
+import ProjectObject.UsuarioObject;
 
 import javax.swing.*;
 import java.util.*;

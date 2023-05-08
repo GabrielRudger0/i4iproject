@@ -1,4 +1,4 @@
-package projectObject;
+package ProjectObject;
 
 public class ComentarioObject {
 

@@ -1,11 +1,11 @@
-package projectView;
+package ProjectView;
 
 import Main.ExecutaTelas;
-import projectController.ControllerTelaComentario;
-import projectController.ControllerTelaLogin;
-import projectDAO.ComentarioDAO;
-import projectObject.ComentarioObject;
-import projectObject.LimitadorCaracteres;
+import ProjectController.ControllerTelaComentario;
+import ProjectController.ControllerTelaLogin;
+import ProjectDAO.ComentarioDAO;
+import ProjectObject.ComentarioObject;
+import ProjectObject.LimitadorCaracteres;
 
 import javax.swing.*;
 import java.awt.*;

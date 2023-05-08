@@ -1,8 +1,8 @@
-package projectDAO;
+package ProjectDAO;
 
 import com.mysql.jdbc.PreparedStatement;
 import i4iproject.factory.ConnectionFactory;
-import projectObject.MaterialObject;
+import ProjectObject.MaterialObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class MaterialDAO {
 
-    public void save(projectObject.MaterialObject materiais){
+    public void save(ProjectObject.MaterialObject materiais){
 
         String sql = "INSERT INTO materiais(MaterialNome,MaterialDescricao,MaterialAtivo, MaterialData, MaterialImagem) VALUES(?,?,?,?,?)";
 
@@ -70,7 +70,7 @@ public class MaterialDAO {
 
 
             while (rset.next()) {
-                projectObject.MaterialObject pegaMateriais = new projectObject.MaterialObject();
+                ProjectObject.MaterialObject pegaMateriais = new ProjectObject.MaterialObject();
 
                 //pegar dados
                 pegaMateriais.setMaterialId(rset.getInt("MaterialId"));

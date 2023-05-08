@@ -1,18 +1,18 @@
-package projectDAO;
+package ProjectDAO;
 
 import com.mysql.jdbc.PreparedStatement;
 import i4iproject.factory.ConnectionFactory;
-import projectObject.ComentarioObject;
+import ProjectObject.UsuarioObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.HashMap;
 
-public class ComentarioDAO {
+public class UsuarioDAO {
 
-    public void save(projectObject.ComentarioObject comentarios){
+    public void save(ProjectObject.UsuarioObject usuarios){
 
-        String sql = "INSERT INTO comentarios(ComentarioDescricao, FKMaterialId, FKUsuarioId, ComentarioData) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO usuarios(UsuarioNome,UsuarioEmail,UsuarioSenha) VALUES(?,?,?)";
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -21,10 +21,9 @@ public class ComentarioDAO {
             //cria conexao com banco de dados
             conn = ConnectionFactory.createConnectionToMySQL();
             pstm = (PreparedStatement) conn.prepareStatement(sql);
-            pstm.setString(1, comentarios.getComentarioDescricao());
-            pstm.setInt(2, comentarios.getFKMaterialId());
-            pstm.setInt(3, comentarios.getFKUsuarioId());
-            pstm.setString (4, comentarios.getComentarioData());
+            pstm.setString(1, usuarios.getUsuarioNome());
+            pstm.setString(2, usuarios.getUsuarioEmail());
+            pstm.setString(3, usuarios.getUsuarioSenha());
 
             //executa a query
 
@@ -42,18 +41,17 @@ public class ComentarioDAO {
                 if (conn!=null){
                     conn.close();
                 }
-            }catch (Exception e) {
+        }catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
     }
 
-    public HashMap<Integer, ComentarioObject> getComentarios() {
+    public HashMap<Integer, UsuarioObject> getUsuarios() {
+        String sql = "SELECT * FROM usuarios";
 
-        String sql = "SELECT * FROM comentarios";
-
-        HashMap<Integer, ComentarioObject> comentarios = new HashMap<>();
+        HashMap<Integer, UsuarioObject> usuarios = new HashMap<>();
 
         Connection conn = null;
         PreparedStatement pstn = null;
@@ -70,16 +68,15 @@ public class ComentarioDAO {
 
 
             while (rset.next()) {
-                projectObject.ComentarioObject pegaComentarios = new projectObject.ComentarioObject();
+                ProjectObject.UsuarioObject pegaUsuarios = new ProjectObject.UsuarioObject();
 
                 //pegar dados
-                pegaComentarios.setComentarioId(rset.getInt("ComentarioId"));
-                pegaComentarios.setComentarioDescricao(rset.getString("ComentarioDescricao"));
-                pegaComentarios.setFKMaterialId(rset.getInt("FKMaterialId"));
-                pegaComentarios.setFKUsuarioId(rset.getInt("FKUsuarioId"));
-                pegaComentarios.setComentarioData(rset.getString("ComentarioData"));
+                pegaUsuarios.setUsuarioId(rset.getInt("UsuarioId"));
+                pegaUsuarios.setUsuarioNome(rset.getString("UsuarioNome"));
+                pegaUsuarios.setUsuarioEmail(rset.getString("UsuarioEmail"));
+                pegaUsuarios.setUsuarioSenha(rset.getString("UsuarioSenha"));
 
-                comentarios.put(pegaComentarios.getComentarioId(), pegaComentarios);
+                usuarios.put(pegaUsuarios.getUsuarioId(), pegaUsuarios);
             }
 
         }catch(Exception e){
@@ -102,7 +99,7 @@ public class ComentarioDAO {
             }
         }
 
-        return comentarios;
+        return usuarios;
 
     }
 }

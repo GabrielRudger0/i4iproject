@@ -1,8 +1,8 @@
-package projectView;
+package ProjectView;
 
 import Main.ExecutaTelas;
-import projectController.ControllerTelaComentario;
-import projectObject.ComentarioObject;
+import ProjectController.ControllerTelaComentario;
+import ProjectObject.ComentarioObject;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

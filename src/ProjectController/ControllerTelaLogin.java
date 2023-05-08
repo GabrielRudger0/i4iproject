@@ -1,8 +1,8 @@
-package projectController;
+package ProjectController;
 
 import Main.ExecutaTelas;
-import projectDAO.UsuarioDAO;
-import projectObject.UsuarioObject;
+import ProjectDAO.UsuarioDAO;
+import ProjectObject.UsuarioObject;
 
 import javax.swing.*;
 import java.util.HashMap;

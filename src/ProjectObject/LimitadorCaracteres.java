@@ -1,4 +1,4 @@
-package projectObject;
+package ProjectObject;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

@@ -1,6 +1,6 @@
 package Main;
 
-import projectView.*;
+import ProjectView.*;
 
 import javax.swing.*;
 import java.awt.*;

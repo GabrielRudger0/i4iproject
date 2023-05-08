@@ -1,7 +1,7 @@
-package projectView;
+package ProjectView;
 
-import projectDAO.MaterialDAO;
-import projectObject.MaterialObject;
+import ProjectDAO.MaterialDAO;
+import ProjectObject.MaterialObject;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
