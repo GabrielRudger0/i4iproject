@@ -1,6 +1,7 @@
 package ProjectController;
 
 import Main.ExecutaTelas;
+import ProjectDAO.ComentarioDAO;
 import ProjectDAO.MaterialDAO;
 import ProjectObject.MaterialObject;
 
@@ -49,6 +50,10 @@ public class ControllerTelaMateriais {
         materiaisNoBanco.delete(materialId);
         ExecutaTelas.frameTelaMateriais.dispose();
         executaTelas.iniciarTelaMateriais();
+    }
+    public static void excluirComentarioDoMaterial(Integer materialId) {
+        ComentarioDAO comentariosNoBanco = new ComentarioDAO();
+        comentariosNoBanco.deletePorMaterial(materialId);
     }
 
     public static List<Integer> listaIdsMaterialDoBanco() {

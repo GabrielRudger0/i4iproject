@@ -69,30 +69,35 @@ public class TelaMateriais {
         botaoExcluirMaterial1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaMateriais.excluirComentarioDoMaterial(listaIdsMaterial.get(0));
                 ControllerTelaMateriais.excluirMaterial(listaIdsMaterial.get(0));
             }
         });
         botaoExcluirMaterial2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaMateriais.excluirComentarioDoMaterial(listaIdsMaterial.get(1));
                 ControllerTelaMateriais.excluirMaterial(listaIdsMaterial.get(1));
             }
         });
         botaoExcluirMaterial3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaMateriais.excluirComentarioDoMaterial(listaIdsMaterial.get(2));
                 ControllerTelaMateriais.excluirMaterial(listaIdsMaterial.get(2));
             }
         });
         botaoExcluirMaterial4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaMateriais.excluirComentarioDoMaterial(listaIdsMaterial.get(3));
                 ControllerTelaMateriais.excluirMaterial(listaIdsMaterial.get(3));
             }
         });
         botaoExcluirMaterial5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ControllerTelaMateriais.excluirComentarioDoMaterial(listaIdsMaterial.get(4));
                 ControllerTelaMateriais.excluirMaterial(listaIdsMaterial.get(4));
             }
         });
