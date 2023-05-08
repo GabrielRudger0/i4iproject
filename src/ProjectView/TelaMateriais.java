@@ -18,6 +18,7 @@ public class TelaMateriais {
     private JButton botaoComentarios1, botaoComentarios2, botaoComentarios3, botaoComentarios4, botaoComentarios5;
     private JButton botaoExcluirMaterial1, botaoExcluirMaterial2, botaoExcluirMaterial3, botaoExcluirMaterial4,
             botaoExcluirMaterial5;
+    private JButton botaoCadastrarMaterial;
     private JLabel[] labels1 = {materialNome1, materialDescricao1, materialData1};
     private JLabel[] labels2 = {materialNome2, materialDescricao2, materialData2};
     private JLabel[] labels3 = {materialNome3, materialDescricao3, materialData3};
@@ -99,6 +100,14 @@ public class TelaMateriais {
             public void actionPerformed(ActionEvent e) {
                 ControllerTelaMateriais.excluirComentarioDoMaterial(listaIdsMaterial.get(4));
                 ControllerTelaMateriais.excluirMaterial(listaIdsMaterial.get(4));
+            }
+        });
+        botaoCadastrarMaterial.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ExecutaTelas executaTelas = new ExecutaTelas();
+                ExecutaTelas.frameTelaMateriais.dispose();
+                executaTelas.iniciarTelaCadastroMaterial();
             }
         });
     }
