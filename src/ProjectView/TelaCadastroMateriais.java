@@ -1,5 +1,6 @@
 package ProjectView;
 
+import ProjectController.ControllerTelaCadastroMateriais;
 import ProjectDAO.MaterialDAO;
 import ProjectObject.MaterialObject;
 
@@ -17,6 +18,7 @@ public class TelaCadastroMateriais {
     private JTextField materialNome, materialDescricao, materialImagem;
     private JButton botaoCadastrar, botaoSim, botaoNao;
     private MaterialObject material = new MaterialObject();
+    public static Boolean materialAtivoVazio = true;
 
 public TelaCadastroMateriais() {
 
@@ -44,24 +46,21 @@ public TelaCadastroMateriais() {
     botaoSim.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            materialAtivoVazio = false;
             material.setMaterialAtivo(1);
         }
     });
     botaoNao.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            materialAtivoVazio = false;
             material.setMaterialAtivo(0);
         }
     });
     botaoCadastrar.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            MaterialDAO materialBanco = new MaterialDAO();
-            LocalDateTime now = LocalDateTime.now();
-            Timestamp timestamp = Timestamp.valueOf(now);
-            material.setMaterialData(String.valueOf(timestamp));
-            materialBanco.save(material);
-            JOptionPane.showMessageDialog(null, "Material cadastrado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            ControllerTelaCadastroMateriais.inserirMaterialNoBanco(material);
         }
     });
 
