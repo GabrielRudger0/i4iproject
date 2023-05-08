@@ -32,21 +32,7 @@ public class TelaCadastroComentario {
         botaoComentar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ComentarioObject comentario = new ComentarioObject();
-                ComentarioDAO comentariosNoBanco = new ComentarioDAO();
-
-                String comentarioDigitado = textoComentario.getText();
-                comentario.setComentarioDescricao(comentarioDigitado);
-
-                LocalDateTime now = LocalDateTime.now();
-                Timestamp timestamp = Timestamp.valueOf(now);
-                comentario.setComentarioData(String.valueOf(timestamp));
-
-                comentario.setFKUsuarioId(ControllerTelaLogin.usuarioAtual);
-                comentario.setFKMaterialId(ControllerTelaComentario.materialIdParaTelaComentario);
-
-                comentariosNoBanco.save(comentario);
-
+                cadastrarComentario();
             }
         });
 
@@ -71,5 +57,21 @@ public class TelaCadastroComentario {
         campoTexto.setMargin(new Insets(1, 1, 1, 1));
 
         textoComentario = campoTexto;
+    }
+    private void cadastrarComentario() {
+        ComentarioObject comentario = new ComentarioObject();
+        ComentarioDAO comentariosNoBanco = new ComentarioDAO();
+
+        String comentarioDigitado = textoComentario.getText();
+        comentario.setComentarioDescricao(comentarioDigitado);
+
+        LocalDateTime now = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(now);
+        comentario.setComentarioData(String.valueOf(timestamp));
+
+        comentario.setFKUsuarioId(ControllerTelaLogin.usuarioAtual);
+        comentario.setFKMaterialId(ControllerTelaComentario.materialIdParaTelaComentario);
+
+        comentariosNoBanco.save(comentario);
     }
 }

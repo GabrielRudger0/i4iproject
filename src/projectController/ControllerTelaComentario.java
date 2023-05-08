@@ -16,9 +16,6 @@ public class ControllerTelaComentario {
 
 
         if (comentario == null) {
-            labels[0].setText("null");
-            labels[1].setText("null");
-            labels[2].setText("null");
             desabilitaVisibilidade(labels);
 
         } else {
@@ -30,57 +27,7 @@ public class ControllerTelaComentario {
             labels[1].setText(comentario.getComentarioDescricao());
             labels[2].setText(comentario.getComentarioData());
         }
-//        ComentarioDAO comentariosNoBanco = new ComentarioDAO();
-//
-//        List<Integer> listaIdsComentarios = listaIdsComentarioDoBanco();
-//
-//        HashMap<Integer, ComentarioObject> comentarios = comentariosNoBanco.getComentarios();
-//        List<ComentarioObject> listaComentarios = new ArrayList<>();
-//        Integer materialId = materialIdParaTelaComentario;
-//        Integer comentarioId;
-//
-//        comentarioId = listaComentarios.get(posicaoNaTela).getComentarioId();
-//
-//        preencheCamposNulos(listaIdsComentarios, comentariosNoBanco);
-//
-//        if (comentarios.get(comentarioId).getFKMaterialId() == materialId) {
-//
-//            ComentarioObject comentario = comentarios.get(comentarioId);
-//            String nomeUsuario = retornaNomeDoUsuario(comentario.getFKUsuarioId());
-//            String nomeMaterial = retornaNomeMaterial(comentario.getFKMaterialId());
-//            nomeMaterialNoTitulo.setText(nomeMaterial);
-//
-//            labels[0].setText(nomeUsuario);
-//            labels[1].setText(comentario.getComentarioDescricao());
-//            labels[2].setText(comentario.getComentarioData());
-//        } else {
-//            labels[0].setText("null");
-//            labels[1].setText("null");
-//            labels[2].setText("null");
-//            desabilitaVisibilidade(labels);
-//        }
 
-    }
-
-    //public static void
-
-    public static List<Integer> listaIdsComentarioDoBanco() {
-        ComentarioDAO comentariosNoBanco = new ComentarioDAO();
-        HashMap<Integer, ComentarioObject> comentarios = comentariosNoBanco.getComentarios();
-        List<Integer> listaIdsComentarios = new ArrayList<>();
-
-        for (Integer comentarioId : comentarios.keySet()) {
-            listaIdsComentarios.add(comentarios.get(comentarioId).getComentarioId());
-
-        }
-        for (int i = listaIdsComentarios.size() - 1; i < 4; i++) {
-            Random rand = new Random();
-            Integer numero = rand.nextInt(2147483647 - 1670818091 + 1) + 1670818091;
-
-            listaIdsComentarios.add(numero);
-        }
-
-        return listaIdsComentarios;
     }
 
     private static String retornaNomeDoUsuario(Integer usuarioId) {
@@ -112,20 +59,35 @@ public class ControllerTelaComentario {
 
         return nome;
     }
-    public static void preencheCamposNulos(List<Integer> listaIdsComentarios, ComentarioDAO comentariosNoBanco) {
-        for (int i = listaIdsComentarios.size() - 1; i < 4; i++) {
-            Random rand = new Random();
-            Integer numero1 = rand.nextInt(2147483647 - 1670818091 + 1) + 1670818091;
-            Integer numero2 = rand.nextInt(2147483647 - 1670818091 + 1) + 1670818091;
+    public static List<ComentarioObject> retornaListaComentariosDoMaterial() {
+        ComentarioDAO comentarios = new ComentarioDAO();
+        HashMap<Integer, ComentarioObject> listaComentariosNoBanco = comentarios.getComentarios();
+        List<ComentarioObject> listaComentariosDeMaterial = new ArrayList<>();
 
-            ComentarioObject comentarioNulo = comentariosNoBanco.getComentarios().get(i);
-            comentarioNulo.setFKMaterialId(numero1);
-            comentarioNulo.setFKUsuarioId(numero2);
-            comentarioNulo.setComentarioDescricao("null");
-            comentarioNulo.setComentarioData("null");
+        Integer materialId = materialIdParaTelaComentario;
+
+
+        for (Integer keyComentarioId: listaComentariosNoBanco.keySet()) {
+            Integer materialIdNoComentario = listaComentariosNoBanco.get(keyComentarioId).getFKMaterialId();
+
+            if (materialIdNoComentario == materialId) {
+                listaComentariosDeMaterial.add(listaComentariosNoBanco.get(keyComentarioId));
+            }
         }
+        /*
+            For inicia na última posição preenchida com dados e,
+            caso as posições posteriores estiverem sem comentários,
+            preenche as posições com vazio;
+         */
+        for (int i = listaComentariosDeMaterial.size() - 1; i < 4; i++) {
+            ComentarioObject comentarioVazio = null;
+            listaComentariosDeMaterial.add(comentarioVazio);
+        }
+        return listaComentariosDeMaterial;
     }
     private static void desabilitaVisibilidade(JLabel[] labels) {
+
+        //Desabilita a visibilidade dos campos na tela
         labels[0].setVisible(false);
         labels[1].setVisible(false);
         labels[2].setVisible(false);
