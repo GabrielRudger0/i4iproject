@@ -1,5 +1,6 @@
 package projectController;
 
+import Main.ExecutaTelas;
 import projectDAO.UsuarioDAO;
 import projectObject.UsuarioObject;
 
@@ -7,7 +8,7 @@ import javax.swing.*;
 import java.util.HashMap;
 
 public class ControllerTelaLogin {
-    private Integer usuarioAtual;
+    public static Integer usuarioAtual;
     private final UsuarioDAO usuarioBanco = new UsuarioDAO();
     private final HashMap<Integer, UsuarioObject> listaDeUsuarios = usuarioBanco.getUsuarios();
 
@@ -40,7 +41,9 @@ public class ControllerTelaLogin {
 
     public void permiteAcesso(boolean emailAceito, boolean senhaAceita) {
         if (emailAceito && senhaAceita) {
-            JOptionPane.showMessageDialog(null, "Deu bom");
+            ExecutaTelas executaTelas = new ExecutaTelas();
+            ExecutaTelas.frameTelaLogin.dispose();
+            executaTelas.iniciarTelaMateriais();
         } else {
             JOptionPane.showMessageDialog(null, "Erro: Email ou senha inválido", "Login", JOptionPane.ERROR_MESSAGE, null);
         }

@@ -8,37 +8,57 @@ import projectObject.MaterialObject;
 import projectObject.UsuarioObject;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class ControllerTelaComentario {
     public static Integer materialIdParaTelaComentario;
-    public static void setarInformacoesDosComentarios(JLabel[] labels, Integer idComentario, JLabel nomeMaterialNoTitulo) {
-        ComentarioDAO comentariosNoBanco = new ComentarioDAO();
-        List<Integer> listaIdsComentarios = listaIdsComentarioDoBanco();
+    public static void setarInformacoesDosComentarios(JLabel[] labels, ComentarioObject comentario, JLabel nomeMaterialNoTitulo) {
 
-        preencheCamposNulos(listaIdsComentarios, comentariosNoBanco);
 
-            ComentarioObject comentario = comentariosNoBanco.getComentarios().get(idComentario);
+        if (comentario == null) {
+            labels[0].setText("null");
+            labels[1].setText("null");
+            labels[2].setText("null");
+            desabilitaVisibilidade(labels);
 
-            if (comentario == null || comentario.getFKMaterialId() != materialIdParaTelaComentario) {
+        } else {
+            String nomeUsuario = retornaNomeDoUsuario(comentario.getFKUsuarioId());
+            String nomeMaterial = retornaNomeMaterial(comentario.getFKMaterialId());
+            nomeMaterialNoTitulo.setText(nomeMaterial);
 
-                labels[0].setText("null");
-                labels[1].setText("null");
-                labels[2].setText("null");
-                desabilitaVisibilidade(labels);
-
-            } else {
-                String nomeUsuario = retornaNomeDoUsuario(comentario.getFKUsuarioId());
-                String nomeMaterial = retornaNomeMaterial(comentario.getFKMaterialId());
-                nomeMaterialNoTitulo.setText(nomeMaterial);
-
-                labels[0].setText(nomeUsuario);
-                labels[1].setText(comentario.getComentarioDescricao());
-                labels[2].setText(comentario.getComentarioData());
-            }
+            labels[0].setText(nomeUsuario);
+            labels[1].setText(comentario.getComentarioDescricao());
+            labels[2].setText(comentario.getComentarioData());
+        }
+//        ComentarioDAO comentariosNoBanco = new ComentarioDAO();
+//
+//        List<Integer> listaIdsComentarios = listaIdsComentarioDoBanco();
+//
+//        HashMap<Integer, ComentarioObject> comentarios = comentariosNoBanco.getComentarios();
+//        List<ComentarioObject> listaComentarios = new ArrayList<>();
+//        Integer materialId = materialIdParaTelaComentario;
+//        Integer comentarioId;
+//
+//        comentarioId = listaComentarios.get(posicaoNaTela).getComentarioId();
+//
+//        preencheCamposNulos(listaIdsComentarios, comentariosNoBanco);
+//
+//        if (comentarios.get(comentarioId).getFKMaterialId() == materialId) {
+//
+//            ComentarioObject comentario = comentarios.get(comentarioId);
+//            String nomeUsuario = retornaNomeDoUsuario(comentario.getFKUsuarioId());
+//            String nomeMaterial = retornaNomeMaterial(comentario.getFKMaterialId());
+//            nomeMaterialNoTitulo.setText(nomeMaterial);
+//
+//            labels[0].setText(nomeUsuario);
+//            labels[1].setText(comentario.getComentarioDescricao());
+//            labels[2].setText(comentario.getComentarioData());
+//        } else {
+//            labels[0].setText("null");
+//            labels[1].setText("null");
+//            labels[2].setText("null");
+//            desabilitaVisibilidade(labels);
+//        }
 
     }
 
@@ -92,7 +112,7 @@ public class ControllerTelaComentario {
 
         return nome;
     }
-    private static void preencheCamposNulos(List<Integer> listaIdsComentarios, ComentarioDAO comentariosNoBanco) {
+    public static void preencheCamposNulos(List<Integer> listaIdsComentarios, ComentarioDAO comentariosNoBanco) {
         for (int i = listaIdsComentarios.size() - 1; i < 4; i++) {
             Random rand = new Random();
             Integer numero1 = rand.nextInt(2147483647 - 1670818091 + 1) + 1670818091;
