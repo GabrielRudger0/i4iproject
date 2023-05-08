@@ -3,6 +3,7 @@ package ProjectController;
 import Main.ExecutaTelas;
 import ProjectDAO.ComentarioDAO;
 import ProjectDAO.MaterialDAO;
+import ProjectObject.ComentarioObject;
 import ProjectObject.MaterialObject;
 
 import javax.swing.*;
@@ -13,6 +14,21 @@ import java.util.List;
 import java.util.Random;
 
 public class ControllerTelaMateriais {
+
+    public static void iniciaCadastroDeMaterial() {
+        MaterialDAO materiais = new MaterialDAO();
+        HashMap<Integer, MaterialObject> listaMateriaisNoBanco = materiais.getMateriais();
+        Integer numeroMateriais = listaMateriaisNoBanco.size();
+
+        if (numeroMateriais == 5) {
+            JOptionPane.showMessageDialog(null, "Lista de materiais cheia!",
+                    "Cadastro de Materiais",JOptionPane.ERROR_MESSAGE);
+        } else {
+            ExecutaTelas executaTelas = new ExecutaTelas();
+            ExecutaTelas.frameTelaMateriais.dispose();
+            executaTelas.iniciarTelaCadastroMaterial();
+        }
+    }
 
     public static void setarInformacoesDosMateriais(JLabel[] label, JLabel imagem, JButton[] botoes,
                                                     Integer materialId) {
