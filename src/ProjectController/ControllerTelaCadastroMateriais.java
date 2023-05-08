@@ -1,5 +1,6 @@
 package ProjectController;
 
+import Main.ExecutaTelas;
 import ProjectDAO.MaterialDAO;
 import ProjectObject.MaterialObject;
 import ProjectView.TelaCadastroMateriais;
@@ -20,11 +21,13 @@ public class ControllerTelaCadastroMateriais {
             material.setMaterialData(String.valueOf(timestamp));
 
             materialBanco.save(material);
+
             JOptionPane.showMessageDialog(null, "Material cadastrado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            voltaTelaMateriais();
         }
 
     }
-    public static Boolean validaCamposMaterial(MaterialObject material) {
+    private static Boolean validaCamposMaterial(MaterialObject material) {
         Boolean cadastroValido = true;
         String materialNome = material.getMaterialNome();
         String materialDescricao = material.getMaterialDescricao();
@@ -48,5 +51,10 @@ public class ControllerTelaCadastroMateriais {
         }
 
         return  cadastroValido;
+    }
+    public static void voltaTelaMateriais() {
+        ExecutaTelas executaTelas = new ExecutaTelas();
+        ExecutaTelas.frameTelaCadastroMateriais.dispose();
+        executaTelas.iniciarTelaMateriais();
     }
 }

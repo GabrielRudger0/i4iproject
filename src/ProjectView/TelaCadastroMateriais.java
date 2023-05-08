@@ -17,6 +17,7 @@ public class TelaCadastroMateriais {
     private JLabel nomeLabel, descricaoLabel, imagemLabel;
     private JTextField materialNome, materialDescricao, materialImagem;
     private JButton botaoCadastrar, botaoSim, botaoNao;
+    private JButton botaoVoltar;
     private MaterialObject material = new MaterialObject();
     public static Boolean materialAtivoVazio = true;
 
@@ -64,5 +65,11 @@ public TelaCadastroMateriais() {
         }
     });
 
-    }
+    botaoVoltar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ControllerTelaCadastroMateriais.voltaTelaMateriais();
+        }
+    });
+}
 }
