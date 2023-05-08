@@ -21,6 +21,8 @@ public class TelaCadastroComentario {
     private JButton botaoVoltar, botaoComentar;
 
     public TelaCadastroComentario() {
+        String nomeMaterial = ControllerTelaComentario.retornaNomeMaterial(ControllerTelaComentario.materialIdParaTelaComentario);
+        nomeMaterialNoCadastro.setText(nomeMaterial);
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,7 +43,7 @@ public class TelaCadastroComentario {
     private void createUIComponents() {
 
         JPanel painel = new JPanel();
-        painel.setPreferredSize(new Dimension(300, 250));
+        painel.setPreferredSize(new Dimension(820, 200));
 
         panelCadastroComentario = painel;
 
@@ -81,7 +83,6 @@ public class TelaCadastroComentario {
             comentariosNoBanco.save(comentario);
             JOptionPane.showMessageDialog(null, "Comentário salvo com sucesso!",
                     "Cadastro de Comentário",JOptionPane.INFORMATION_MESSAGE);
-
             ExecutaTelas executaTelas = new ExecutaTelas();
             ExecutaTelas.frameTelaCadastroComentarios.dispose();
             executaTelas.iniciarTelaMateriais();

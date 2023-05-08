@@ -14,15 +14,13 @@ import java.util.*;
 public class ControllerTelaComentario {
     public static Integer materialIdParaTelaComentario;
     public static void setarInformacoesDosComentarios(JLabel[] labels, JSeparator separador,
-                                                      ComentarioObject comentario, JLabel nomeMaterialNoTitulo) {
+                                                      ComentarioObject comentario) {
 
         if (comentario == null) {
             desabilitaVisibilidade(labels, separador);
 
         } else {
             String nomeUsuario = retornaNomeDoUsuario(comentario.getFKUsuarioId());
-            String nomeMaterial = retornaNomeMaterial(comentario.getFKMaterialId());
-            nomeMaterialNoTitulo.setText(nomeMaterial);
 
             labels[0].setText(nomeUsuario);
             labels[1].setText(comentario.getComentarioDescricao());
@@ -45,7 +43,7 @@ public class ControllerTelaComentario {
 
         return nome;
     }
-    private static String retornaNomeMaterial(Integer materialId) {
+    public static String retornaNomeMaterial(Integer materialId) {
         MaterialDAO materiaisNoBanco = new MaterialDAO();
         HashMap<Integer, MaterialObject> listaDeMateriais = materiaisNoBanco.getMateriais();
         String nome = null;

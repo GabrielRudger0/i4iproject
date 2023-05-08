@@ -22,13 +22,15 @@ public class TelaComentarios {
     private JLabel[] labels3 = {usuario3, comentario3, data3};
     private JLabel[] labels4 = {usuario4, comentario4, data4};
     public TelaComentarios() {
+        String nomeMaterial = ControllerTelaComentario.retornaNomeMaterial(ControllerTelaComentario.materialIdParaTelaComentario);
+        nomeMaterialNoComentario.setText(nomeMaterial);
 
         List<ComentarioObject> listaComentarios = ControllerTelaComentario.retornaListaComentariosDoMaterial();
 
-        ControllerTelaComentario.setarInformacoesDosComentarios(labels1, separador1, listaComentarios.get(0), nomeMaterialNoComentario);
-        ControllerTelaComentario.setarInformacoesDosComentarios(labels2, separador2, listaComentarios.get(1), nomeMaterialNoComentario);
-        ControllerTelaComentario.setarInformacoesDosComentarios(labels3, separador3, listaComentarios.get(2), nomeMaterialNoComentario);
-        ControllerTelaComentario.setarInformacoesDosComentarios(labels4, separador4, listaComentarios.get(3), nomeMaterialNoComentario);
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels1, separador1, listaComentarios.get(0));
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels2, separador2, listaComentarios.get(1));
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels3, separador3, listaComentarios.get(2));
+        ControllerTelaComentario.setarInformacoesDosComentarios(labels4, separador4, listaComentarios.get(3));
 
     botaoCadastrarComentario.addActionListener(new ActionListener() {
         @Override
@@ -44,6 +46,5 @@ public class TelaComentarios {
             executaTelas.iniciarTelaMateriais();
         }
     });
-}
-
+    }
 }
