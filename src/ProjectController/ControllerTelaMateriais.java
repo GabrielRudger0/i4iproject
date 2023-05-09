@@ -4,14 +4,13 @@ import Main.ExecutaTelas;
 import ProjectDAO.ComentarioDAO;
 import ProjectDAO.MaterialDAO;
 import ProjectObject.ComentarioObject;
+import ProjectObject.FuncoesUtil;
 import ProjectObject.MaterialObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 public class ControllerTelaMateriais {
 
@@ -46,10 +45,11 @@ public class ControllerTelaMateriais {
                 desabilitaVisibilidadeMaterial(label, imagem, botoes);
 
             } else {
+                String data = FuncoesUtil.formatarData(material.getMaterialData());
                 if (material.getMaterialAtivo() != 0) {
                     label[0].setText(material.getMaterialNome());
                     label[1].setText("<html><p style=\"width:900px\">"+material.getMaterialDescricao()+"</html>");
-                    label[2].setText(material.getMaterialData());
+                    label[2].setText(data);
                 } else {
                     desabilitaVisibilidadeMaterial(label, imagem, botoes);
                 }

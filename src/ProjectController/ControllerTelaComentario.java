@@ -5,6 +5,7 @@ import ProjectDAO.ComentarioDAO;
 import ProjectDAO.MaterialDAO;
 import ProjectDAO.UsuarioDAO;
 import ProjectObject.ComentarioObject;
+import ProjectObject.FuncoesUtil;
 import ProjectObject.MaterialObject;
 import ProjectObject.UsuarioObject;
 
@@ -22,9 +23,10 @@ public class ControllerTelaComentario {
         } else {
             String nomeUsuario = retornaNomeDoUsuario(comentario.getFKUsuarioId());
 
+            String data = FuncoesUtil.formatarData(comentario.getComentarioData());
             labels[0].setText(nomeUsuario);
             labels[1].setText(comentario.getComentarioDescricao());
-            labels[2].setText(comentario.getComentarioData());
+            labels[2].setText(data);
         }
 
     }

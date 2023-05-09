@@ -5,7 +5,7 @@ import ProjectController.ControllerTelaComentario;
 import ProjectController.ControllerTelaLogin;
 import ProjectDAO.ComentarioDAO;
 import ProjectObject.ComentarioObject;
-import ProjectObject.LimitadorCaracteres;
+import ProjectObject.FuncoesUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,7 +51,7 @@ public class TelaCadastroComentario {
         campoTexto.setLineWrap(true);
         campoTexto.setWrapStyleWord(true);
         campoTexto.setRows(5);
-        campoTexto.setDocument(new LimitadorCaracteres(180));
+        campoTexto.setDocument(new FuncoesUtil(180));
         campoTexto.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.BLACK, 1), // borda preta de 1px
                 BorderFactory.createEmptyBorder(2, 5, 2, 2) // borda vazia
