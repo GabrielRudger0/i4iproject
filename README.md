@@ -11,7 +11,7 @@
     <a href="https://pt-br.reactjs.org/">🌌 Funcionalidades </a>
 </h1>
 <p> 👉 Faça o login utilizando os dados registrados no banco de dados;</p>
-<p> 👉 Vizualize, cadastre exclua materiais na lista de materiais;</p>
+<p> 👉 Vizualize, cadastre e exclua materiais na lista de materiais;</p>
 <p> 👉 Clique no botão "Comentários" para vizualizar os comentários do material;</p>
 <p> 👉 Faça um comentário no material clicando no botão "Atribuir Comentário";</p>
 <p> 👉 No programa, é possível inserir até cinco materiais;</p>
